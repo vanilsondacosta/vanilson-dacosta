@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+@import "tailwindcss";
+
+:root {
+  --cor-primaria: #58f0a7;
+  --cor-preta: #0a0a0a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #fff;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 0%, rgba(88, 240, 167, 0.08) 0%, transparent 70%);
+}
+
+main {
+  position: relative;
+  z-index: 10;
+}
+
+.portrait {
+  transform: scaleX(-1);
+  mask-image: linear-gradient(to left, transparent 0%, black 30%, black 100%);
+  -webkit-mask-image: linear-gradient(to left, transparent 0%, black 30%, black 100%);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(38px);
+  transition: opacity 700ms ease, transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stat-card {
+  animation: flutuar 4s ease-in-out infinite;
+  box-shadow: 0 20px 50px rgba(10, 10, 10, 0.06), 0 4px 15px rgba(10, 10, 10, 0.03);
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-25px);
+  box-shadow: 0 25px 60px rgba(10, 10, 10, 0.09), 0 8px 20px rgba(10, 10, 10, 0.04);
+}
+
+.project-card {
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 34px rgba(88, 240, 167, 0.2);
+}
+
+.floating-icon {
+  animation: floatingIcon 7s ease-in-out infinite;
+  filter: drop-shadow(0 8px 18px rgba(88, 240, 167, 0.12));
+}
+
+.delay-0 { animation-delay: 0s; }
+.delay-1 { animation-delay: -1s; }
+.delay-2 { animation-delay: -2s; }
+.delay-3 { animation-delay: -3s; }
+.delay-4 { animation-delay: -4s; }
+.delay-5 { animation-delay: -5s; }
+
+@keyframes flutuar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes floatingIcon {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(0, -30px, 0) rotate(8deg); }
+}
+
+@media (max-width: 768px) {
+  main { margin-inline: 20px; }
+  .reveal { transform: translateY(24px); }
+  .floating-icon { opacity: 0.55; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .floating-icon, .stat-card { animation: none; }
+}
