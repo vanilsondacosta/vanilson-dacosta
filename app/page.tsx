@@ -12,7 +12,7 @@ export default function Home() {
       <FloatingIcons />
       <div className="relative z-10">
         <Navbar />
-        <main className="mx-[70px] my-[30px] max-md:mx-5 max-md:my-5 max-[480px]:mx-[15px]">
+        <main className="site-container my-[30px] max-md:my-5">
           <Hero />
           <Skills />
           <Projects />

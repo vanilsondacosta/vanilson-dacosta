@@ -1,16 +1,24 @@
 import { projects } from "../data/projects";
 import { ProjectCard } from "./ProjectCard";
 import { Reveal } from "./Reveal";
-import { SectionHeading } from "./SectionHeading";
 
 export function Projects() {
   return (
     <Reveal>
-      <section id="projetos" className="mt-[150px] flex min-h-[1200px] w-full flex-col items-center justify-between rounded-[10px] border border-[#4d4d4d]/30 p-[40px_20px] text-[#0a0a0a] shadow-[0_4px_12px_rgba(88,240,167,0.3)] max-md:mt-[120px] max-md:min-h-0 max-md:gap-10">
-        <SectionHeading />
-        <div className="mt-10 grid w-full grid-cols-3 justify-between gap-[30px] max-lg:grid-cols-2 max-md:grid-cols-1 max-md:gap-[15px]">
-          {projects.map((project) => (
-            <ProjectCard key={project.title} project={project} />
+      <section id="projetos" className="projects-section mt-[150px] w-full text-[#0a0a0a] max-md:mt-[120px]">
+        <header className="projects-header mb-16 flex items-end justify-between border-b border-black/[0.08] pb-7 max-md:mb-10 max-md:flex-col max-md:items-start max-md:gap-5">
+          <div>
+            <p className="mb-3 font-mono text-[12px] uppercase tracking-[0.22em] text-[#34b88a]">Seleção / 2024—2026</p>
+            <h1 className="text-[clamp(42px,6vw,82px)] font-bold leading-[0.92] tracking-[-0.05em]">PROJECTOS</h1>
+          </div>
+          <p className="max-w-[380px] text-[15px] leading-[1.7] text-[#777] max-md:text-[14px]">
+            Sistemas, plataformas e experiências digitais desenvolvidas para resolver problemas reais.
+          </p>
+        </header>
+
+        <div className="flex flex-col gap-[70px] max-md:gap-[45px]">
+          {projects.map((project, index) => (
+            <ProjectCard key={project.title} project={project} index={index} />
           ))}
         </div>
       </section>

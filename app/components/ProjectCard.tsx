@@ -1,20 +1,65 @@
+"use client";
+
+import { ExternalLink } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import type { Project } from "../data/projects";
 
-export function ProjectCard({ project }: { project: Project }) {
+export function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const ref = useRef<HTMLElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setVisible(true);
+        observer.unobserve(element);
+      }
+    }, { threshold: 0.18 });
+
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <article className="project-card overflow-hidden rounded-2xl border border-white/[0.08] bg-[#071312ec] text-[#d1d5db] shadow-[0_4px_12px_rgba(88,240,167,0.3)]">
-      <div className="h-[180px] overflow-hidden border-b border-white/[0.05] bg-[repeating-conic-gradient(#ccc_0%_25%,#eee_0%_50%)] bg-[length:20px_20px]">
-        <img className="h-full w-full object-cover transition-transform duration-500 hover:scale-[1.04]" src={`/imagens/${project.image}`} alt={project.title} />
+    <article ref={ref} className={`project-row ${index % 2 === 1 ? "project-row-reverse" : ""} ${visible ? "project-row-visible" : ""}`}>
+      <div className="project-visual group">
+        <div className="project-browser-bar">
+          <div className="flex gap-[6px]">
+            <span /><span /><span />
+          </div>
+          <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[#71817d]">project-{project.index}</span>
+        </div>
+        <div className="project-image-wrap">
+          <img src={`/imagens/${project.image}`} alt={project.title} />
+          <div className="project-image-overlay" />
+        </div>
       </div>
-      <div className="p-5 max-md:p-[18px]">
-        <div className="mb-[15px] flex flex-wrap gap-[10px]">
+
+      <div className="project-details">
+        <div className="flex items-center justify-between border-b border-black/[0.07] pb-5">
+          <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-[#34b88a]">Project {project.index}</span>
+          <span className="text-[12px] text-[#999]">{project.year}</span>
+        </div>
+
+        <div className="mt-7">
+          <p className="mb-3 text-[12px] font-semibold uppercase tracking-[0.16em] text-[#777]">{project.role}</p>
+          <h2 className="text-[clamp(30px,3.5vw,48px)] font-bold leading-[1.05] tracking-[-0.035em]">{project.title}</h2>
+          <p className="mt-5 max-w-[560px] text-[15px] leading-[1.75] text-[#686868]">{project.description}</p>
+        </div>
+
+        <div className="mt-7 flex flex-wrap gap-2">
           {project.tags.map((tag) => (
-            <span key={tag} className="rounded-full bg-[#0d1f1c] px-3 py-1.5 text-xs text-[#9ca3af]">{tag}</span>
+            <span key={tag} className="project-tag">{tag}</span>
           ))}
         </div>
-        <h2 className="mb-[10px] text-[22px] text-[#e5e7eb] max-md:text-[20px]">{project.title}</h2>
-        <p className="mb-[15px] text-sm leading-[1.5] text-[#9ca3af]">Experiência digital com estética elevada e foco direto em conversão, clareza do catálogo e percepção de valor.</p>
-        <a className="text-sm font-bold text-[#34d399] hover:underline" href={project.repository ?? "#"}>Ver repositório ↗</a>
+
+        <a className="project-link mt-8" href={project.repository ?? "#"} target={project.repository ? "_blank" : undefined} rel="noreferrer">
+          <span>Ver repositório</span>
+          <ExternalLink size={17} />
+        </a>
       </div>
     </article>
   );
