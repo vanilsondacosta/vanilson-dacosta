@@ -30,6 +30,62 @@ body {
   font-family: "Space Grotesk", sans-serif;
 }
 
+.page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.page-loader-logo {
+  position: relative;
+  width: 120px;
+  display: grid;
+  place-items: center;
+  animation: loaderLogo 1.4s ease-in-out both;
+}
+
+.page-loader-logo img {
+  width: 88px;
+  height: 112px;
+  object-fit: contain;
+}
+
+.page-loader-logo span {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  width: 72px;
+  height: 2px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(88, 240, 167, 0.2);
+  transform: translateX(-50%);
+}
+
+.page-loader-logo span::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: #58f0a7;
+  animation: loaderProgress 1.2s ease-in-out infinite;
+}
+
+@keyframes loaderProgress {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
+
+@keyframes loaderLogo {
+  0% { opacity: 0; transform: scale(0.9); }
+  20%, 80% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.05); }
+}
+
 body::before {
   content: "";
   position: fixed;
@@ -478,6 +534,6 @@ main {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
-  .floating-icon, .stat-card, .skills-grid, .orbit-ring, .orbit-core, .orbit-node, .skill-card, .project-row .project-visual, .project-row .project-details { animation: none; }
+  .floating-icon, .stat-card, .skills-grid, .orbit-ring, .orbit-core, .orbit-node, .skill-card, .project-row .project-visual, .project-row .project-details, .page-loader-logo, .page-loader-logo span::after { animation: none; }
   .project-row { opacity: 1; }
 }
