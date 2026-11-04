@@ -2,8 +2,8 @@ import { Reveal } from "./Reveal";
 
 const stats = [
   { label: "Eu sou", number: "01", title: <>Dev. <br /> Pleno</>, text: <>Junior sim, mas com sede <br /> de aprender e entregar.</>, direction: "direcX" },
-  { label: "Domínios", number: "02", title: <>Web <br /> Developer</>, text: <>soluções rápidas <br /> responsivas e funcionais.</>, direction: "direcY" },
-  { label: "Domínios", number: "03", title: <>Mobile <br /> Developer</>, text: <>Apps que funcionam,<br /> código que aprendo. funcionais.</>, direction: "direcX" },
+  { label: "Domínios", number: "02", title: <>Java <br /> Developer</>, text: <>soluções robustas <br /> e sistemas críticos.</>, direction: "direcY" },
+  { label: "Domínios", number: "03", title: <>Mobile <br /> Developer</>, text: <>Apps que funcionam,<br /> código que aprendo.</>, direction: "direcX" },
 ];
 
 export function Hero() {
@@ -14,14 +14,15 @@ export function Hero() {
           <div className="flex w-full flex-col leading-none text-[#0a0a0a]">
             <h1 className="text-[60px] max-md:text-[clamp(40px,11vw,60px)] max-[480px]:text-[42px]">Quem eu sou ?</h1>
             <br /><br />
-            <h1 className="bg-gradient-to-r from-black/65 to-[#58f0a7] bg-clip-text text-[60px] text-transparent max-md:text-[clamp(40px,11vw,60px)] max-[480px]:text-[42px]">Frontend Dev</h1>
+            <h1 className="bg-gradient-to-r from-black/65 to-[#58f0a7] bg-clip-text text-[60px] text-transparent max-md:text-[clamp(40px,11vw,60px)] max-[480px]:text-[42px]">Software Dev:</h1>
             <h1 className="text-[60px] max-md:text-[clamp(40px,11vw,60px)] max-[480px]:text-[42px]">Vanilson da</h1>
             <h1 className="text-[60px] max-md:text-[clamp(40px,11vw,60px)] max-[480px]:text-[42px]">Costa.</h1>
           </div>
 
           <div className="flex flex-col gap-1.5 border-l border-[#58f0a7] p-[15px] text-[14px] text-[#0a0a0a]">
-            <p>Sou Vanilson, 21 anos, estudante do 13ª ano no Instituto de Telecomunicações.</p>
-            <p>Frontend júnior com React e React Native, mas já olho para o backend,</p>
+            <p>Sou Vanilson da Costa, nascido em 2005, estagiário no Instituto de Telecomunicações (ITEL).</p>
+            <p>Construo interfaces gráficas completas para aplicações web e mobile, com foco no desenvolvimento de software, integração de sistemas e criação de soluções tecnológicas funcionais e eficientes.</p>
+   <p>Participei no Coding Angola 2025 e, em 2026, integrei a equipa responsável pela infraestrutura de redes da FITITEL, uma das maiores feiras de tecnologia de Angola. Experiências que fortaleceram as minhas competências técnicas, capacidade de resolução de problemas e trabalho em equipa.</p>
           </div>
         </div>
 
