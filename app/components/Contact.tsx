@@ -4,7 +4,7 @@ import { Reveal } from "./Reveal";
 const contacts = [
   { icon: Phone, label: "Telefone / WhatsApp", value: "+244 948 862 259", href: "tel:+244948862259" },
   { icon: Mail, label: "Email", value: "vanilsondacosta61@gmail.com", href: "mailto:vanilsondacosta61@gmail.com" },
-  { icon: Globe2, label: "LinkedIn", value: "Vanilson da Costa", href: "https://www.linkedin.com/in/vanilson-da-costa" },
+  { icon: Globe2, label: "LinkedIn", value: "Vanilson da Costa", href: "www.linkedin.com/in/vanilson-da-costa45" },
   { icon: Code2, label: "GitHub", value: "vanilsondacosta", href: "https://github.com/vanilsondacosta" },
 ];
 
